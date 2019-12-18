@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Favourites</title>
+<link rel='shortcut icon' type='image/x-icon' href='/images/favourites.png' rel='shortcut icon' type='image/x-icon'>
+<script type="text/javascript" language="JavaScript">
+function show(id)
+ {
+  var d = document.getElementById(id);
+  for (var i = 1; i<=99; i++)
+   {
+    if (document.getElementById('lmenu'+i)) {document.getElementById('lmenu'+i).style.display='none';}
+   }
+  if (d)
+   {
+    d.style.display='block';
+    document.cookie='id='+id;
+   }
+ }
+</script>
+<style type="text/css">
+#menu
+{
+ position : absolute;
+ left     : 10px;
+ top      : 0px;
+}
+#page_right
+{
+ position : fixed;
+ width    : 100%;
+ right    : 0px;
+ top      : 10px;
+ clear    : both;
+}
+
+h1
+{
+ font-family     : "verdana", "arial", "sans-serif";
+ font-size       : 12.0pt;
+ font-weight     : bold;
+ padding-left    : 10px;
+}
+
+dl
+{
+ font-family     : "verdana", "arial", "sans-serif";
+ font-size       : 10.0pt;
+ font-weight     : normal;
+}
+
+dt
+{
+ font-family     : "verdana", "arial", "sans-serif";
+ font-size       : 10.0pt;
+ font-weight     : bold;
+ padding-bottom  : 0px;
+ padding-top     : 0px;
+ padding-left    : 10px;
+ padding-right   : 0px;
+ margin          : 0px;
+ list-style-type : none;
+ cursor          : pointer;
+}
+
+li
+{
+ padding-top     : 5px;
+ padding-bottom  : 5px;
+ list-style-type : circle;
+}
+
+a
+{
+ font-family     : "verdana", "arial", "sans-serif";
+ font-size       : 9.0pt;
+ font-weight     : normal;
+ display         : block;
+ color           : #202020;
+ text-decoration : underline;
+}
+
+a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer
+{
+ cursor: pointer;
+}
+
+td
+{
+ font-family     : "verdana", "arial", "sans-serif";
+ font-size       : 10.0pt;
+ font-weight     : bold;
+ padding-bottom  : 0px;
+ padding-top     : 0px;
+ padding-left    : 10px;
+ padding-right   : 0px;
+ margin          : 0px;
+}
+
+
+html { 
+  background: url(/images/sea.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+</style>
+</head>
+<body onload='show("{{.Id}}")'>
+<div id="menu">
+<h1>Favourites {{.Mode}} </h1><dl>
+
+
+
+
+<p> {{.Data}}</p>
+
+
+
+<table width=500>
+ <tr>
+  <td width="30%" align=left>Maintenance</td>
+  <td width="20%" align=left><form action="/" method=post><input type="hidden" name="edit" value="1"><input type="submit" value="Edit"></form></td>
+  <td width="20%" align=left><form action="/" method=post><input type="hidden" name="insert" value="1"><input type="submit" value="Insert"></form></td>
+  <td width="20%" align=left><form action="/" method=post><input type="hidden" name="normal" value="1"><input type="submit" value="Normal"></form></td>
+  <td width="10%" align=left> </td>
+ </tr>
+</table>
+<form action="/" target="_blank" method=post>
+<table width=500>
+ <tr><td colspan=4><br>Search</td></tr>
+ <tr><td colspan=4><input type="text" size=60 name="keyword"></td></tr>
+ <tr>
+  <td><input type="submit" name="google"    value="Google"></td>
+  <td><input type="submit" name="image"     value="Image"></td>
+  <td><input type="submit" name="shopping"  value="Shopping"></td>
+  <td><input type="submit" name="maps"      value="Maps"></td>
+ </tr>
+ <tr>
+  <td><input type="submit" name="imdb"      value="IMDB"></td>
+  <td><input type="submit" name="wiki"      value="Wiki"></td>
+  <td><input type="submit" name="youtube"   value="YouTube"></td>
+  <td><input type="submit" name="eBay"      value="eBay"></td> 
+ </tr>
+ 
+ <tr>
+  <td><input type="submit" name="amazon"      value="Amazon"></td>
+  <td><input type="submit" name="db2v101"      value="DB2 10.1 kc"></td>
+  <td></td>
+  <td></td> 
+ </tr>
+ </table>
+</form>
+<form action="/" method=post>
+<table width=500>
+ <tr>
+  <td><br>Favourites search</td>
+ <tr>
+  <td><input type="text" size=45 name="keyword"> &nbsp; <input type="submit" name="urlsearch" value="Search"></td>
+ </tr>
+</table>
+</form>
+<br>
+<table width=500>
+{{.Search}}
+</table>
+</div>
+</body>
+</html>
